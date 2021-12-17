@@ -76,9 +76,9 @@ const Product = ({ item }) => {
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
-        <Link to={`/products/${item._id}`}> </Link>
+
         <Icon>
-          <SearchOutlined />
+          <Link to={`/product/${item._id}`}><SearchOutlined /> </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />

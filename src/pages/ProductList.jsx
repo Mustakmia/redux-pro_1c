@@ -8,6 +8,7 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
+
 const Container = styled.div``;
 
 const Title = styled.h1`
@@ -40,7 +41,7 @@ const Option = styled.option``;
 
 const ProductList = () => {
   const location = useLocation();
-  const cat = (location.pathname.split('/')[2])
+  const cat = location.pathname.split('/')[2]
 
   const [filters, setFilters] = useState({});
 
@@ -50,7 +51,7 @@ const ProductList = () => {
     const value = e.target.value
     setFilters({
       ...filters,
-      [e.target.name]: value
+      [e.target.name]: value,
     });
   };
   return (

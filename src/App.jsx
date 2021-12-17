@@ -1,6 +1,6 @@
 import {
   BrowserRouter,
-  Route, Routes, Navigate,
+  Route, Routes,
 
 } from "react-router-dom";
 import Product from "./components/Product";
@@ -19,18 +19,18 @@ const App = () => {
         <Route exact path="/" element={<Home />} >
 
         </Route>
-        <Route path="products/:catagory*" element={<ProductList />}>
+        <Route path="/products/:catagory*" element={<ProductList />}>
         </Route>
-        <Route path="product/:id*" element={<Product />} >
+        <Route path="/product/:id*" element={<Product />} >
         </Route>
-        <Route path="cart*" element={<Cart />} >
+        <Route path="/cart*" element={<Cart />} >
         </Route>
-        {/* <Route path="login*" element={<Login />} >
-          {user ? <Navigate to="/" /> : <Login />}
+        <Route path="/login*" element={<Login />} >
+          {user ? <Route to="/" /> : <Login />}
         </Route>
-        <Route path="register*" element={<Register />} >
-          {user ? <Navigate to="/" /> : <Register />}
-        </Route> */}
+        <Route path="/register*" element={<Register />} >
+          {user ? <Route to="/" /> : <Register />}
+        </Route>
       </Routes>
     </BrowserRouter>
   )
