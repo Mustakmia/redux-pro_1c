@@ -7,8 +7,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import { publicRequest } from "../../requestMethd";
-import { addProduct } from '../redux/cartRedux';
+import { publicRequest } from "../requestMethods";
+import { addProducts } from '../redux/cartRedux';
 import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
@@ -151,7 +151,7 @@ const Product = () => {
 
   const handleClick = () => {
     // update cart
-    dispatch(addProduct({ ...product, quantity, color, size }))
+    dispatch(addProducts({ ...product, quantity, color, size }))
       ;
   }
   return (
@@ -172,24 +172,21 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map(c => (<FilterColor color={c} key={c} onClick={() => setColor(c)} />))}
-
-
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle >
+              <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map(s => (<FilterColor color={s} key={s} />))}
-
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove onClick={() => handleQuantity
-                ("dec")} />
+              <Remove onClick={() => handleQuantity("dec")} />
               <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity
-                ("inc")} />
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
@@ -200,5 +197,6 @@ const Product = () => {
     </Container>
   );
 };
+
 
 export default Product;
